@@ -33,15 +33,15 @@ export class GalleryComponent implements OnInit {
       this.username = params['username'];
       console.log('-- username:', this.username);
 
-      let user = this.stateService.getKey('selected-twitter-user');
-      console.log('-- USER:', user);
-      if (user) this.name = user.name;
+      // let user = this.stateService.getKey('selected-twitter-user');
+      // console.log('-- USER:', user);
+      // if (user) this.name = user.name;
       this.load(this.lastId);
     });
   }
 
   initGallery (totalTweets) {
-    console.log('-- init gallery attempt');
+    // console.log('-- init gallery attempt');
 
     // TODO: find a better way!
     // subscribe to an angular event informing the ui finished rendering? how?!
@@ -50,7 +50,7 @@ export class GalleryComponent implements OnInit {
       if (renderedTweets < totalTweets) return this.initGallery(totalTweets);
 
       // ok, all rendered, init
-      console.log('-- init gallery OK!');
+      // console.log('-- init gallery OK!');
       if (this.gallery) {
         this.gallery.data('lightGallery').refresh();
       } else {
@@ -75,23 +75,25 @@ export class GalleryComponent implements OnInit {
   }
 
   private loaded (tweets) {
+    let partial = tweets.length;
+    if (!partial) {
+      // no more tweets!
+      // console.log(`--- no more tweets for user ${this.username}`);
+      this.loading = false;
+      this.hasMore = false;
+
+      // show a name for user without tweets
+      if (!this.name) this.setName(tweets);
+      return;
+    }
+
     this.setLastId(tweets);
     this.addTweets(tweets);
     if (!this.name) this.setName(tweets);
 
-    let partial = tweets.length;
-    if (!partial) {
-      // no more tweets!
-      console.log(`--- no more tweets for user ${this.username}`);
-      this.loading = false;
-      this.hasMore = false;
-      return;
-    }
-
     // recurse to get enough
     this.totalWhileRecursing+=partial;
     if (this.totalWhileRecursing < this.tweetsPerRequest) {
-      console.log('--- RECURSE! We need more! Got only ', partial);
       this.setLastId(tweets);
       this.load(this.lastId);
       return;
@@ -103,24 +105,21 @@ export class GalleryComponent implements OnInit {
 
   setLastId (tweets) {
     if (!tweets.length) {
-      console.log('-- unable to set last id! no tweets!')
       this.hasMore = false;
       return;
     }
 
     var lastTweet = tweets.slice(-1)[0];
     this.lastId = lastTweet.id;
-    console.log('-- LAST ID SET:', this.lastId);
   }
 
   addTweets (tweets) {
-    console.log('--- got tweets:', tweets);
     this.tweets = this.tweets.concat(tweets);
     this.initGallery(this.tweets.length);
   }
 
   setName (tweets) {
-    console.log('-- set username from tweets');
+    // console.log('-- set name from tweets');
     if (!tweets.length) {
       this.name = this.username
       return;
