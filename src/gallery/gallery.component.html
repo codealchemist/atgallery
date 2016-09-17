@@ -1,0 +1,36 @@
+<atg-title [sectionName]="name"></atg-title>
+
+<div
+  id="lightgallery"
+  infinite-scroll
+  [infiniteScrollDistance]="0.8"
+  [infiniteScrollThrottle]="200"
+  (scrolled)="onScroll()"
+>
+  <a
+    *ngFor="let tweet of tweets"
+    class="gallery-item"
+    href="{{tweet.extended_entities.media[0].media_url}}:large"
+  >
+    <img src="{{tweet.extended_entities.media[0].media_url}}:thumb" class="gallery-item-image">
+
+    <!-- OPEN TWEET ICON -->
+    <span
+      class="open-tweet"
+      [attr.data-url]="tweet.extended_entities.media[0].display_url"
+    >
+      <i class="glyphicon glyphicon-retweet"></i>
+    </span>
+  </a>
+</div>
+
+<div id="loading" *ngIf="loading">
+  <img src="loading.gif" />
+  <span>Loading...</span>
+</div>
+
+<footer>
+  <div id="the-end" class="alert alert-success" role="alert">
+    Well done! You retrieved all images for user <b>{{username}}</b>.
+  </div>
+</footer>

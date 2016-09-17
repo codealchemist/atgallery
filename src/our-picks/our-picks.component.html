@@ -1,0 +1,15 @@
+<atg-title [sectionName]="'Our Picks'"></atg-title>
+
+<div id="our-picks">
+  <a *ngFor="let item of ourPicks" (click)="selectGallery(item)">
+    <div
+      class="gallery-pick-container"
+      [ngStyle]="{'background-image': getItemBackground(item)}"
+    >
+      <div class="gallery-name">{{item.name}}</div>
+      <div class="gallery-description">{{item.description}}</div>
+    </div>
+  </a>
+</div>
+
+<div id="gallery"></div>

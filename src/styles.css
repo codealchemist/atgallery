@@ -1,0 +1,269 @@
+body {
+  font: 14px Raleway, "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: black;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+a {
+  color: #00B7FF;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #00B7FF;
+  opacity: 0.7;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #00B7FF;
+}
+
+h1 {
+  color: #444;
+  font-family: "Raleway";
+}
+
+h2 {
+  font-weight: bold;
+}
+
+/*#gallery {
+  height: 300px;
+  overflow: auto;
+}*/
+
+.header {
+  padding: 0 0 20px 0;
+}
+
+.main-title {
+  padding: 0 40px;
+}
+
+.subtitle {
+  background: #333;
+  padding: 5px 40px 5px 40px;
+}
+
+.jumbotron-sm .subtitle p {
+  margin: 0;
+}
+
+.info {
+  color: #555;
+}
+
+#gallery {
+  margin: 0 0 60px 0;
+}
+
+.blueimp-gallery .modal-dialog {
+  max-width: 90% !important;
+}
+
+.modal-content {
+  background: black;
+}
+
+.modal-header {
+  color: #888;
+  border-bottom: 1px solid #444;
+}
+
+.modal-footer {
+  border-top: 1px solid #444;
+}
+
+.modal-footer button {
+  display: none;
+}
+
+.username {
+  color: #789;
+}
+
+.user-title {
+  color: #777;
+}
+
+#the-end {
+  display: none;
+}
+
+footer {
+  padding: 30px 0;
+}
+
+.gallery-pick-container {
+  width: 320px;
+  height: 320px;
+  padding: 5px;
+  border: 1px solid #444;
+  display: inline-block;
+  background-size: cover;
+  float: left;
+  margin: 1px;
+  position: relative;
+  cursor: pointer;
+}
+
+.gallery-name {
+    color: white;
+    background: black;
+    opacity: 0.5;
+    padding: 2px;
+    text-align: left;
+}
+
+.gallery-description {
+    color: #ccc;
+    position: absolute;
+    bottom: 0px;
+    background: black;
+    opacity: 0.7;
+    padding: 5px;
+    margin-left: -5px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.jumbotron-dark {
+  background: #222;
+  color: #555;
+}
+
+.jumbotron-dark h1 {
+  color: #eee;
+}
+
+.jumbotron-dark h2 {
+  color: #ccc;
+}
+
+.jumbotron-sm {
+  padding: 0;
+}
+
+.jumbotron-sm h1 {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  background: black;
+}
+
+.social-button-container {
+  text-align: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  background: #eee;
+  position: fixed;
+  top: 10px;
+  right: 25px;
+  z-index: 1000;
+}
+
+.social-button {
+  display: inline-block;
+}
+
+.social-button:first-child {
+  margin: 0 0 5px 0;
+}
+
+.social-button-block {
+  padding-top: 25%;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.fadein {
+  animation-duration: 3s;
+    animation-name: fadein;
+}
+
+.right-out {
+  right: -500px;
+}
+
+.right-in {
+  animation-duration: 3s;
+    animation-name: right-in;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes right-in {
+  from {
+    right: -500px;
+  }
+
+  to {
+    right: 20px;
+  }
+}
+
+.background {
+  background: url('background.jpg') no-repeat;
+  background-size: cover;
+}
+
+.blur {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+
+.expand {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.shadow {
+  -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+}
+
+.brb-b {
+  border-bottom: 1px solid black;
+}
+
+.brb-w {
+  border-bottom: 1px solid white;
+}
+
+.brt-b {
+  border-top: 1px solid black;
+}
+
+.brt-w {
+  border-bottom: 1px solid white;
+}
+
+.centered-content {
+  text-align: center;
+}
+
+.centered-content > * {
+  display: inline-block;
+}
