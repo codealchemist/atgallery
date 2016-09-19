@@ -1,0 +1,77 @@
+#loading {
+  width: 100px;
+  height: 27px;
+  background: #333;
+  border-radius: 50px;
+  padding: 5px;
+  display: inline-block;
+  color: #ccc;
+  font-size: 13px;
+  display: block;
+  position: fixed;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#loading img {
+  width: 16px;
+}
+
+#loading span {
+  vertical-align: middle;
+  padding-left: 5px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  border: 1px solid #333;
+  position: relative;
+}
+
+.gallery-item-image {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+  background-size: cover;
+  background-position: center;
+}
+
+.open-tweet {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background: black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tweet-image {
+  position: absolute;
+  bottom: 5px;
+  right: 35px;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background: black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.open-tweet:hover, .open-tweet:hover .glyphicon,
+.tweet-image:hover, .tweet-image:hover .glyphicon {
+  color: #00B7FF;
+}
+
+.open-tweet .glyphicon, .tweet-image .glyphicon {
+  color: white;
+  top: 5px;
+}
