@@ -42,14 +42,16 @@
     <!-- styles -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:400' rel='stylesheet' type='text/css'>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- build:css bundle.css -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="node_modules/lightgallery/dist/css/lightgallery.min.css">
+    <!-- endbuild -->
 
     <!-- scripts -->
-    <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <!-- Polyfill(s) for older browsers -->
+    <!-- build:js vendor.js -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
@@ -57,9 +59,13 @@
 
     <script src="systemjs.config.js"></script>
     <script src="share.init.js"></script>
+    <!-- endbuild -->
+
+    <!-- inject:js -->
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
+    <!-- endinject -->
   </head>
 
   <body>
