@@ -5,8 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class GalleryService {
   config = {
-    ip: 'twitter-server.herokuapp.com',
-    port: 80,
+    host: 'https://twitter-server.herokuapp.com',
     tweetsPerRequest: 70
   };
 
@@ -25,11 +24,10 @@ export class GalleryService {
   }
 
   getMediaTweets ({username, lastId}): Observable<[Object]> {
-    let host = this.config.ip;
-    let port = this.config.port;
+    let host = this.config.host;
     let count = this.config.tweetsPerRequest;
 
-    let url = `https://${host}:${port}/tweets/${username}/media?count=${count}`
+    let url = `${host}/tweets/${username}/media?count=${count}`
     if (lastId) url+=`&max_id=${lastId}`;
 
     return this.http
