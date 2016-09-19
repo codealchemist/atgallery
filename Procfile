@@ -1,1 +1,1 @@
-web: concurrently node \"node_modules/twitter-server/src/index.js --config twitter-server.json\" \"node index.js\"
+web: gulp build; concurrently node \"node_modules/twitter-server/src/index.js --config twitter-server.json\" \"node index.js\"
