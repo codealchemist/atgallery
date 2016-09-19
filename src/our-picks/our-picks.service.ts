@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 export class OurPicksService {
   ourPicks = [];
   config = {
-    ip: '127.0.0.1',
-    port: 3080
+    ip: 'twitter-server.herokuapp.com',
+    port: 80,
   };
 
   // the service will query the following usernames on twitter
@@ -105,7 +105,7 @@ export class OurPicksService {
     var host = this.config.ip;
     var port = this.config.port;
     return this.http
-      .get(`http://${host}:${port}/user/${username}`)
+      .get(`https://${host}:${port}/user/${username}`)
       .map((res: Response) => {
         let body = res.json();
         if (body.errors && body.errors.length) {

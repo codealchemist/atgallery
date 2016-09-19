@@ -29,7 +29,7 @@ export class GalleryService {
     let port = this.config.port;
     let count = this.config.tweetsPerRequest;
 
-    let url = `http://${host}:${port}/tweets/${username}/media?count=${count}`
+    let url = `https://${host}:${port}/tweets/${username}/media?count=${count}`
     if (lastId) url+=`&max_id=${lastId}`;
 
     return this.http
