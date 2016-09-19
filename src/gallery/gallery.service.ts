@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class GalleryService {
   config = {
-    ip: '127.0.0.1',
-    port: 3080,
+    ip: 'twitter-server.herokuapp.com',
+    port: 80,
     tweetsPerRequest: 70
   };
 
