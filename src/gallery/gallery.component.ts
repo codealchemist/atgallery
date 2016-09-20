@@ -1,18 +1,20 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { GalleryService } from './gallery.service';
+import { TwitterService } from '../twitter/twitter.service';
 import { StateService } from '../state/state.service';
 import { InfiniteScroll } from 'angular2-infinite-scroll';
+import { SeoService } from '../seo/seo.service';
 
 @Component({
     selector: 'atg-gallery',
     templateUrl: 'gallery/gallery.component.html',
     styleUrls: ['gallery/gallery.component.css'],
-    providers: [ GalleryService ]
+    providers: [ TwitterService ]
 })
 export class GalleryComponent implements OnInit {
   @Output() galleryOpened = new EventEmitter();
   username = null;
+  user = null;
   name = null;
   tweets = [];
   loading = true;
@@ -24,20 +26,22 @@ export class GalleryComponent implements OnInit {
 
   constructor (
     private route: ActivatedRoute,
-    private galleryService: GalleryService,
-    private stateService: StateService
+    private twitterService: TwitterService,
+    private stateService: StateService,
+    private seoService: SeoService
   ) { }
 
   ngOnInit () {
     this.route.params.subscribe(params => {
       this.username = params['username'];
-      console.log('-- username:', this.username);
+      this.load();
 
-      // let user = this.stateService.getKey('selected-twitter-user');
-      // console.log('-- USER:', user);
-      // if (user) this.name = user.name;
-      this.load(this.lastId);
+      this.seoService.setOpenGraphMeta('title', `${this.username} - Automatic Twitter Gallery`);
+      this.seoService.setOpenGraphMeta('url', location.href);
     });
+
+    jQuery('#twitter-share-button').data('url', location.href);
+    jQuery('.fb-share-button').data('href', location.href);
   }
 
   initGallery (totalTweets) {
@@ -59,22 +63,45 @@ export class GalleryComponent implements OnInit {
     }, 100);
   }
 
-  load (lastId) {
+  loadTweets (lastId) {
     let params = {
       username: this.username,
       lastId: lastId
     };
 
-    this.loading = true;
-    this.galleryService
+    this.twitterService
       .getMediaTweets(params)
       .subscribe(
-        tweets => this.loaded(tweets),
+        tweets => this.tweetsLoaded(tweets),
         error => this.handleError(error)
       );
   }
 
-  private loaded (tweets) {
+  loadUser () {
+    this.twitterService
+      .getUser(this.username)
+      .subscribe(
+        user => this.userLoaded(user),
+        error => this.handleError
+      );
+  }
+
+  load () {
+    this.loading = true;
+    this.loadUser();
+    this.loadTweets(null);
+  }
+
+  private userLoaded(user) {
+    this.user = user;
+    this.stateService.setKey('galleryOpened', user);
+
+    // set open graph metas
+    this.seoService.setOpenGraphMeta('image', user.profile_image_url.replace('_normal', ''));
+    this.seoService.setOpenGraphMeta('description', `${user.description} (source: @atgallery)`);
+  }
+
+  private tweetsLoaded (tweets) {
     let partial = tweets.length;
     if (!partial) {
       // no more tweets!
@@ -95,7 +122,7 @@ export class GalleryComponent implements OnInit {
     this.totalWhileRecursing+=partial;
     if (this.totalWhileRecursing < this.tweetsPerRequest) {
       this.setLastId(tweets);
-      this.load(this.lastId);
+      this.loadTweets(this.lastId);
       return;
     }
 
@@ -119,7 +146,6 @@ export class GalleryComponent implements OnInit {
   }
 
   setName (tweets) {
-    // console.log('-- set name from tweets');
     if (!tweets.length) {
       this.name = this.username
       return;
@@ -133,18 +159,11 @@ export class GalleryComponent implements OnInit {
   }
 
   onScroll () {
-    if (this.loading) {
-      console.log('--- LOADING in progress! Wait until it finishes to load more')
-      return;
-    }
+    if (this.loading) return;
 
-    if (!this.hasMore) {
-      // TODO
-      console.log('--- no more tweets for user, disable infite scroll...');
-      return;
-    }
+    // TODO: unbind onScroll
+    if (!this.hasMore) return;
 
-    console.log('-- on scroll');
-    this.load(this.lastId);
+    this.loadTweets(this.lastId);
   }
 }

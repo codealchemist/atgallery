@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { OUR_PICKS } from './our-picks.mock';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { TwitterService } from '../twitter/twitter.service';
 
 @Injectable()
 export class OurPicksService {
   ourPicks = [];
-  config = {
-    host: 'https://twitter-server.herokuapp.com'
-  };
+  twitterService;
 
   // the service will query the following usernames on twitter
   // to get the latest data for them ('username', 'logo', description)
@@ -72,46 +71,14 @@ export class OurPicksService {
     'wsl'
   ];
 
-  constructor (private http: Http) {
-    this.loadConfig();
-  }
-
-  loadConfig (): any {
-    this.http.get('../../twitter-server.json')
-      .map(res => res.json())
-      .subscribe(
-        data => this.config = data,
-        err => console.log(err),
-        () => console.log('--- loaded config', this.config)
-      );
+  constructor (private http: Http, twitterService: TwitterService) {
+    this.twitterService = twitterService;
   }
 
   getOurPicks (): Observable<[Object]> {
-    var observables = this.usernames.map((username) => this.getTwitterUser(username));
+    var observables = this.usernames.map((username) => this.twitterService.getUser(username));
     var source = Observable.combineLatest(observables);
     return source;
-  }
-
-  fillOurPicks (username) {
-    this.getTwitterUser(username);
-  }
-
-  addPick (user) {
-    this.ourPicks.push(user);
-  }
-
-  getTwitterUser (username): Observable<Object> {
-    var host = this.config.host;
-    return this.http
-      .get(`${host}/user/${username}`)
-      .map((res: Response) => {
-        let body = res.json();
-        if (body.errors && body.errors.length) {
-          return this.handleError(body.errors[0]);
-        }
-        return body;
-      })
-      .catch(this.handleError);
   }
 
   private handleError (error: any) {

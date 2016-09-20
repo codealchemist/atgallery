@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class StateService {
+  @Output() onChange = new EventEmitter<any>();
   storage = {};
 
   setKey (key, value) {
     this.storage[key] = value;
-    console.log(`-- set: ${key}`, this.storage);
+    this.onChange.emit({key: key, value: value});
   }
 
   getKey (key) {
-    console.log(`-- get: ${key}`, this.storage);
     return this.storage[key];
   }
 }

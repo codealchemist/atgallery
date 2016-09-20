@@ -1,3 +1,9 @@
+function showSharing() {
+  jQuery('.social-button-container')
+    .removeClass('right-out')
+    .addClass('right-in');
+}
+
 function initSharing() {
   var showSocialButtons = true;
 
@@ -12,12 +18,8 @@ function initSharing() {
     FB.Event.subscribe('xfbml.render', onFacebookLoaded);
 
     function onFacebookLoaded() {
-        if (!showSocialButtons) return;
-
-        console.log('-----------> FB LOADED');
-        jQuery('.social-button-container')
-            .removeClass('right-out')
-            .addClass('right-in');
+      if (!showSocialButtons) return;
+      showSharing();
     }
   };
 

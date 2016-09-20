@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { OurPicksService } from './our-picks.service';
+import { TwitterService } from '../twitter/twitter.service';
 import { StateService } from '../state/state.service';
 
 @Component({
     selector: 'atg-our-picks',
     templateUrl: 'our-picks/our-picks.component.html',
-    providers: [ OurPicksService ]
+    providers: [ OurPicksService, TwitterService ]
 })
 export class OurPicksComponent implements OnInit {
   ourPicks = [];
@@ -28,7 +29,6 @@ export class OurPicksComponent implements OnInit {
 
   selectGallery (user) {
     let username = user.screen_name;
-    console.log('-- selected gallery:', username);
     this.stateService.setKey('selected-twitter-user', user);
     this.router.navigate(['/gallery', username]);
   }
@@ -38,7 +38,6 @@ export class OurPicksComponent implements OnInit {
       .getOurPicks()
       .subscribe(
         ourPicks => {
-          console.log('--- GOT PICKS!', ourPicks)
           this.ourPicks = ourPicks
         },
         error => this.error = error

@@ -26,7 +26,8 @@
       // other libraries
       'rxjs':                       'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
-      'angular2-infinite-scroll': 'https://npmcdn.com/angular2-infinite-scroll@0.2.1'
+      'angular2-infinite-scroll': 'https://npmcdn.com/angular2-infinite-scroll@0.2.1',
+      'ng2-social-share': 'npm:ng2-social-share/ng2-social-share.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

@@ -1,5 +1,5 @@
 import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -13,6 +13,8 @@ import { GalleryComponent }  from '../gallery/gallery.component';
 import { StateService } from '../state/state.service';
 import { routing } from './app.routing';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { SeoService } from '../seo/seo.service';
+import { CeiboShare } from 'ng2-social-share';
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, routing, HttpModule, InfiniteScrollModule ],
@@ -23,10 +25,13 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
     TitleComponent,
     ShareComponent,
     OurPicksComponent,
-    GalleryComponent
+    GalleryComponent,
+    CeiboShare
   ],
   providers: [
-    StateService
+    StateService,
+    Title,
+    SeoService
   ],
   bootstrap: [ AppComponent ]
 })
