@@ -13,6 +13,7 @@ import { StateService } from '../state/state.service';
 export class OurPicksComponent implements OnInit {
   ourPicks = [];
   error = null;
+  loading = true;
 
   constructor (
     private ourPicksService: OurPicksService,
@@ -39,6 +40,7 @@ export class OurPicksComponent implements OnInit {
       .subscribe(
         ourPicks => {
           this.ourPicks = ourPicks
+          this.loading = false;
         },
         error => this.error = error
       )
