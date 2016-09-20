@@ -64,6 +64,7 @@ export class GalleryComponent implements OnInit {
   }
 
   loadTweets (lastId) {
+    this.loading = true;
     let params = {
       username: this.username,
       lastId: lastId
@@ -87,7 +88,6 @@ export class GalleryComponent implements OnInit {
   }
 
   load () {
-    this.loading = true;
     this.loadUser();
     this.loadTweets(null);
   }
