@@ -14,7 +14,7 @@ gulp.task('bundle', function() {
     }))
     .pipe($.rename('bundle.js'))
     .pipe($.uglify())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/app'));
 });
 
 gulp.task('html', function () {
@@ -22,25 +22,33 @@ gulp.task('html', function () {
     .pipe($.useref({ searchPath: ['./', 'src'] }))
     // .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cleanCss()))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/app'));
 });
 
 gulp.task('inject', function () {
-  var target = gulp.src('dist/index.html');
-  var sources = gulp.src(['dist/bundle.js'], {read: false});
+  var target = gulp.src('dist/app/index.html');
+  var sources = gulp.src(['dist/app/bundle.js'], {read: false});
 
   return target
     .pipe($.inject(sources, {transform: (file) => {
-      file = file.replace('/dist/', '')
+      file = file.replace('/dist/app/', '')
       return `<script src="${file}"></script>`
     }}))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/app'));
 });
 
 // copy static assets - i.e. non TypeScript compiled source
 gulp.task('copy', function() {
+  // twitter-server config
   gulp.src(['twitter-server.json'])
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/app'));
+
+  // lightgallery fonts and images
+  gulp.src(['node_modules/lightgallery/dist/fonts/*'])
+    .pipe(gulp.dest('dist/fonts'));
+
+  gulp.src(['node_modules/lightgallery/dist/img/*'])
+    .pipe(gulp.dest('dist/img'));
 
   return gulp.src([
       'src/**/*',
@@ -51,7 +59,7 @@ gulp.task('copy', function() {
       ],
       { base : './src' }
     )
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist/app'))
 });
 
 //------------------------------

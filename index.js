@@ -1,11 +1,17 @@
 var express = require('express');
 var http = require('http');
-var gzippo = require('gzippo');
-
+var compression = require('compression');
 var app = express();
-app.use(gzippo.staticGzip('' + __dirname + '/dist/'));
-app.use('/*', function(req, res){
-  res.sendFile(__dirname + '/dist/');
+
+app.use(compression());
+app.use('/', express.static(__dirname + '/dist/app'));
+app.use('/gallery/*', express.static(__dirname + '/dist/app'));
+app.use('/our-picks', express.static(__dirname + '/dist/app'));
+app.use('/fonts', express.static(__dirname + '/dist/fonts'));
+app.use('/img', express.static(__dirname + '/dist/img'));
+
+app.use(function(req, res){
+  res.sendStatus(404);
 });
 
 var server = http.createServer(app);
