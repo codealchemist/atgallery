@@ -7344,7 +7344,8 @@ else {
       // other libraries
       'rxjs':                       'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
-      'angular2-infinite-scroll': 'https://npmcdn.com/angular2-infinite-scroll@0.2.1'
+      'angular2-infinite-scroll': 'https://npmcdn.com/angular2-infinite-scroll@0.2.1',
+      'ng2-social-share': 'npm:ng2-social-share/ng2-social-share.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -7367,6 +7368,12 @@ else {
   });
 })(this);
 
+function showSharing() {
+  jQuery('.social-button-container')
+    .removeClass('right-out')
+    .addClass('right-in');
+}
+
 function initSharing() {
   var showSocialButtons = true;
 
@@ -7381,12 +7388,8 @@ function initSharing() {
     FB.Event.subscribe('xfbml.render', onFacebookLoaded);
 
     function onFacebookLoaded() {
-        if (!showSocialButtons) return;
-
-        console.log('-----------> FB LOADED');
-        jQuery('.social-button-container')
-            .removeClass('right-out')
-            .addClass('right-in');
+      if (!showSocialButtons) return;
+      showSharing();
     }
   };
 
