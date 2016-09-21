@@ -3,8 +3,8 @@ import { StateService } from '../state/state.service';
 
 @Component({
   selector: 'atg-share',
-  templateUrl: 'share/share.component.html',
-  styleUrls: [ 'share/share.component.css' ]
+  templateUrl: 'components/share/share.component.html',
+  styleUrls: [ 'components/share/share.component.css' ]
 })
 export class ShareComponent implements OnInit {
   url = '';

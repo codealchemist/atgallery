@@ -7,8 +7,8 @@ import { SeoService } from '../seo/seo.service';
 
 @Component({
     selector: 'atg-gallery',
-    templateUrl: 'gallery/gallery.component.html',
-    styleUrls: ['gallery/gallery.component.css'],
+    templateUrl: 'components/gallery/gallery.component.html',
+    styleUrls: ['components/gallery/gallery.component.css'],
     providers: [ TwitterService ]
 })
 export class GalleryComponent implements OnInit {

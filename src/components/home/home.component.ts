@@ -3,7 +3,7 @@ import { StateService } from '../state/state.service';
 
 @Component({
     selector: 'atg-home',
-    templateUrl: '../home/home.component.html'
+    templateUrl: 'components/home/home.component.html'
 })
 export class HomeComponent implements OnInit {
   ngOnInit () {

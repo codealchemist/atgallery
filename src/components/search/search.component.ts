@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'atg-search',
-    templateUrl: 'search/search.component.html',
-    styleUrls: [ 'search/search.component.css' ]
+    templateUrl: 'components/search/search.component.html',
+    styleUrls: [ 'components/search/search.component.css' ]
 })
 export class SearchComponent {
   username = null;
