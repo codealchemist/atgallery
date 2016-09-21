@@ -36,12 +36,12 @@ export class GalleryComponent implements OnInit {
       this.username = params['username'];
       this.load();
 
-      this.seoService.setOpenGraphMeta('title', `${this.username} - Automatic Twitter Gallery`);
-      this.seoService.setOpenGraphMeta('url', location.href);
+      // this.seoService.setOpenGraphMeta('title', `${this.username} - Automatic Twitter Gallery`);
+      // this.seoService.setOpenGraphMeta('url', location.href);
     });
 
-    jQuery('#twitter-share-button').data('url', location.href);
-    jQuery('.fb-share-button').data('href', location.href);
+    // jQuery('#twitter-share-button').data('url', location.href);
+    // jQuery('.fb-share-button').data('href', location.href);
   }
 
   initGallery (totalTweets) {
