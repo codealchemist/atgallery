@@ -6,6 +6,31 @@ gulp.task('clean', function () {
   return del('dist/**/*');
 });
 
+gulp.task('tsc', function () {
+  return gulp.src([
+      'typings/**/*.d.ts',
+      'src/**/*.ts'
+    ])
+    .pipe($.tsc({
+      // experimentalDecorators: true,
+      // emitDecoratorMetadata: true,
+      // declarationFiles: true,
+      // target: 'es5',
+      // noImplicitAny: false
+
+      "target": "es5",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "removeComments": false,
+      "noImplicitAny": false,
+      "suppressImplicitAnyIndexErrors": true
+    }))
+    .pipe(gulp.dest('./'));
+});
+
 gulp.task('bundle', function() {
   // Single entry point to browserify
   gulp.src('src/main.js')
@@ -64,4 +89,4 @@ gulp.task('copy', function() {
 
 //------------------------------
 
-gulp.task('build', $.sequence('clean', ['bundle', 'html', 'copy'], 'inject'))
+gulp.task('build', $.sequence('clean', 'tsc', ['bundle', 'html', 'copy'], 'inject'))
