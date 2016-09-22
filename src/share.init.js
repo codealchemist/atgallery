@@ -10,7 +10,7 @@ function initSharing() {
   // facebook
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '204380942916554',
+      appId      : '550849821788071',
       xfbml      : true,
       version    : 'v2.7'
     });

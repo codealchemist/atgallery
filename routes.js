@@ -1,6 +1,9 @@
 var requestify = require('requestify');
 module.exports = routes;
 
+var host = 'http://twitter-server.herokuapp.com';
+var accessToken = '3db44bf3-008f-4dd4-9408-bf5ceadb9883';
+
 // open graph defaults
 var openGraph = {
   image: 'https://atgallery.herokuapp.com/atg-logo.png',
@@ -8,8 +11,6 @@ var openGraph = {
   url: 'https://atgallery.herokuapp.com',
   description: 'Automatically generated image galleries for Twitter accounts.'
 };
-var host = 'http://twitter-server.herokuapp.com';
-var accessToken = '3db44bf3-008f-4dd4-9408-bf5ceadb9883';
 
 function routes(app) {
   app.get('/', (req, res) => {
@@ -42,11 +43,13 @@ function routes(app) {
     })
     .then((response) => {
       var user = response.getBody();
-      openGraph.image = user.profile_image_url.replace('_normal', '');
-      openGraph.title = `${openGraph.title} for ${username}`;
-      openGraph.url = `${openGraph.url}/gallery/${username}`;
-      openGraph.description = user.description;
-      res.render('index', openGraph);
+      var data = {
+        image: user.profile_image_url.replace('_normal', ''),
+        title: `${openGraph.title} for ${username}`,
+        url: `${openGraph.url}/gallery/${username}`,
+        description = user.description
+      };
+      res.render('index', data);
     })
     .fail((error) => {
       console.error('ERROR getting user:', error);
