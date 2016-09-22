@@ -1,14 +1,9 @@
 <div id="social-buttons" class="pull-right social-button-container right-out">
   <div class="social-button-block">
-    <!-- <div *ngIf="username" class="fb-share-button social-button"
-      attr.data-href="https://atgallery.herokuapp.com/gallery/{{username}}"
-      data-layout="button">
-    </div> -->
-
-    <div class="fb-share-button social-button"
-      data-href="https://atgallery.herokuapp.com"
-      data-layout="button">
-    </div>
+    <button class="facebook-button social-button" (click)="facebookShare()">
+      <i class="facebook-logo"></i>
+      <label>Share</label>
+    </button>
 
     <div class="social-button">
       <a
@@ -18,14 +13,6 @@
         <i class="twitter-logo"></i>
         <label>Tweet</label>
       </a>
-
-      <!-- <a
-        id="twitter-share-button"
-        class="twitter-share-button"
-        href="https://twitter.com/intent/tweet"
-        data-text="I just found amazing #photo galleries on #automaticTwitterGallery. Enjoy!"
-        data-url="https://atgallery.herokuapp.com"
-      >Tweet</a> -->
     </div>
   </div>
 </div>

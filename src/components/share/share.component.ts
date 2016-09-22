@@ -37,4 +37,11 @@ export class ShareComponent implements OnInit {
       this.text = `I just found amazing #photo galleries, check them out!`;
     }
   }
+
+  facebookShare () {
+    FB.ui({
+      method: 'share',
+      href: this.url,
+    }, function(response){});
+  }
 }
