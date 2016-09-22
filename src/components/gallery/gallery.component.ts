@@ -163,4 +163,8 @@ export class GalleryComponent implements OnInit {
 
     this.loadTweets(this.lastId);
   }
+
+  openTweet (tweetUrl) {
+    window.open('http://' + tweetUrl);
+  }
 }

@@ -17,7 +17,7 @@
     <!-- OPEN TWEET ICON -->
     <span
       class="open-tweet"
-      [attr.data-url]="tweet.extended_entities.media[0].display_url"
+      (click)="openTweet(tweet.extended_entities.media[0].display_url)"
     >
       <i class="glyphicon glyphicon-retweet"></i>
     </span>
