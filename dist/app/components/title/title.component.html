@@ -1,0 +1,18 @@
+<div class="jumbotron jumbotron-dark jumbotron-sm row brb-b">
+  <div class="col-md-12 main-title">
+    <h1>
+      <span *ngIf="!sectionName">
+        Automatic Twitter Gallery
+      </span>
+
+      <span *ngIf="sectionName">
+        <a routerLink="/">Automatic Twitter Gallery</a> >
+        <span class="user-title">{{sectionName}}</span>
+      </span>
+    </h1>
+  </div>
+
+  <div class="col-md-12 subtitle">
+    <p class="lead" *ngIf="!sectionName">Automatically generated image galleries for Twitter accounts.</p>
+  </div>
+</div>
