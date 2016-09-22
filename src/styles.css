@@ -289,3 +289,7 @@ footer {
   vertical-align: middle;
   padding-left: 5px;
 }
+
+*:focus {
+  outline:none !important
+}
