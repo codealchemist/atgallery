@@ -47,7 +47,7 @@ function routes(app) {
         image: user.profile_image_url.replace('_normal', ''),
         title: `${openGraph.title} for ${username}`,
         url: `${openGraph.url}/gallery/${username}`,
-        description = user.description
+        description: user.description
       };
       res.render('index', data);
     })
