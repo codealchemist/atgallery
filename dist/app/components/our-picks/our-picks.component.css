@@ -1,0 +1,9 @@
+.our-picks {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.row-filling {
+  width: 320px;
+}

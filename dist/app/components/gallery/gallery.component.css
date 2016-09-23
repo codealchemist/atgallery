@@ -49,3 +49,13 @@
   color: white;
   top: 5px;
 }
+
+.gallery {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.row-filling {
+  width: 150px;
+}
