@@ -8,6 +8,7 @@ import { StateService } from '../state/state.service';
 @Component({
     selector: 'atg-our-picks',
     templateUrl: 'components/our-picks/our-picks.component.html',
+    styleUrls: [ 'components/our-picks/our-picks.component.css' ],
     providers: [ OurPicksService, TwitterService ]
 })
 export class OurPicksComponent implements OnInit {
