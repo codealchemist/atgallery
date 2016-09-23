@@ -14,7 +14,7 @@ export class OurPicksService {
   usernames = [
     'kritayuga',
     'LamborghiniRD',
-    'AfremovArt',
+    'Art_Afremov',
     'estella_one',
     'Marialovessea',
     'NASA',
