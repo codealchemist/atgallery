@@ -20,7 +20,7 @@ export class GalleryComponent implements OnInit {
   loading = true;
   lastId = null;
   hasMore = true;
-  tweetsPerRequest = 70;
+  tweetsPerRequest = 100;
   totalWhileRecursing = 0;
   gallery;
 
@@ -66,7 +66,8 @@ export class GalleryComponent implements OnInit {
     this.loading = true;
     let params = {
       username: this.username,
-      lastId: lastId
+      lastId: lastId,
+      count: this.tweetsPerRequest
     };
 
     this.twitterService

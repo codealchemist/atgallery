@@ -23,9 +23,9 @@ export class TwitterService {
       );
   }
 
-  getMediaTweets ({username, lastId}): Observable<[Object]> {
+  getMediaTweets ({username, lastId, count}): Observable<[Object]> {
     let host = this.config.host;
-    let count = this.config.tweetsPerRequest;
+    count = count || this.config.tweetsPerRequest;
 
     let url = `${host}/tweets/${username}/media?count=${count}`
     if (lastId) url+=`&max_id=${lastId}`;
