@@ -26,7 +26,6 @@ export class OurPicksService {
     'Historicalmages',
     'HistoryInPix',
     'fabulousanimals',
-    'SPACEdotcom',
     'NHM_WPY',
     'FilmsnotDead',
     'Piclogy',
