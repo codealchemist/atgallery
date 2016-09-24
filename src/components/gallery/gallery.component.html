@@ -8,21 +8,52 @@
   [infiniteScrollThrottle]="200"
   (scrolled)="onScroll()"
 >
-  <a
-    *ngFor="let tweet of tweets"
-    class="gallery-item"
-    href="{{tweet.extended_entities.media[0].media_url}}:large"
-  >
-    <img src="{{tweet.extended_entities.media[0].media_url}}:thumb" class="gallery-item-image">
 
-    <!-- OPEN TWEET ICON -->
-    <span
-      class="open-tweet"
-      (click)="openTweet(tweet.extended_entities.media[0].display_url)"
+  <span *ngFor="let tweet of tweets" class="media-container">
+    <!-- video -->
+    <div *ngIf="tweet.extended_entities.media[0].video_info">
+      <div style="display:none" id="{{tweet.id}}">
+        <video class="lg-video-object lg-html5" controls loop preload="none">
+          <source src="{{tweet.extended_entities.media[0].video_info.variants[0].url}}" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <a
+        [attr.data-poster]="tweet.extended_entities.media[0].media_url"
+        [attr.data-sub-html]="tweet.text"
+        [attr.data-html]="'#'+tweet.id"
+        class="gallery-item"
+      >
+        <img src="{{tweet.extended_entities.media[0].media_url}}:thumb">
+
+        <!-- OPEN TWEET ICON -->
+        <span
+          class="open-tweet"
+          (click)="openTweet(tweet.extended_entities.media[0].display_url)"
+        >
+          <i class="glyphicon glyphicon-retweet"></i>
+        </span>
+      </a>
+    </div>
+
+    <!-- image -->
+    <a
+      *ngIf="!tweet.extended_entities.media[0].video_info"
+      class="gallery-item"
+      href="{{tweet.extended_entities.media[0].media_url}}:large"
+      [attr.data-sub-html]="tweet.text"
     >
-      <i class="glyphicon glyphicon-retweet"></i>
-    </span>
-  </a>
+      <img src="{{tweet.extended_entities.media[0].media_url}}:thumb" class="gallery-item-image">
+
+      <!-- OPEN TWEET ICON -->
+      <span
+        class="open-tweet"
+        (click)="openTweet(tweet.extended_entities.media[0].display_url)"
+      >
+        <i class="glyphicon glyphicon-retweet"></i>
+      </span>
+    </a>
+  </span>
 
   <!-- row fillings -->
   <i class="row-filling"></i>

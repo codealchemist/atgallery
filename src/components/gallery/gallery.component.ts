@@ -55,7 +55,9 @@ export class GalleryComponent implements OnInit {
       if (this.gallery) {
         this.gallery.data('lightGallery').refresh();
       } else {
-        this.gallery = jQuery("#lightgallery").lightGallery({selector: 'a'});
+        this.gallery = jQuery("#lightgallery").lightGallery({
+          selector: 'a'
+        });
       }
     }, 100);
   }
