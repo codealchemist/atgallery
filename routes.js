@@ -2,7 +2,6 @@ var requestify = require('requestify');
 module.exports = routes;
 
 var host = 'http://twitter-server.herokuapp.com';
-var accessToken = '3db44bf3-008f-4dd4-9408-bf5ceadb9883';
 
 // open graph defaults
 var openGraph = {
@@ -37,7 +36,7 @@ function routes(app) {
         expires: 1000 * 60 * ttl
       },
       headers: {
-        Authorization: 'Bearer ' + accessToken
+        origin: openGraph.url
       },
       dataType: 'json'
     })
