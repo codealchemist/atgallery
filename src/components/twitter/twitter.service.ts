@@ -47,6 +47,7 @@ export class TwitterService {
     var host = this.config.host;
     return this.http
       .get(`${host}/user/${username}`)
+      .timeout(3000, new Error('timeout exceeded'))
       .map((res: Response) => {
         let body = res.json();
         if (body.errors && body.errors.length) {
@@ -58,6 +59,7 @@ export class TwitterService {
   }
 
   private handleError (error: any) {
+    console.log('-- twitter service error:', error);
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg); // log to console instead

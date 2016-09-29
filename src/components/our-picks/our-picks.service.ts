@@ -75,8 +75,7 @@ export class OurPicksService {
 
   getOurPicks (): Observable<[Object]> {
     var observables = this.usernames.map((username) => this.twitterService.getUser(username));
-    var source = Observable.combineLatest(observables);
-    return source;
+    return Observable.onErrorResumeNext(observables);
   }
 
   private handleError (error: any) {

@@ -36,15 +36,16 @@ export class OurPicksComponent implements OnInit {
   }
 
   getOurPicks () {
+    this.ourPicks = [];
     this.ourPicksService
       .getOurPicks()
       .subscribe(
-        ourPicks => {
-          this.ourPicks = ourPicks
+        pick => {
+          this.ourPicks.push(pick);
           this.loading = false;
         },
         error => this.error = error
-      )
+      );
   }
 
   getItemBackground (item) {
