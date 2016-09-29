@@ -13,7 +13,6 @@ export class OurPicksService {
   // to get the latest data for them ('username', 'logo', description)
   usernames = [
     'kritayuga',
-    'LamborghiniRD',
     'Art_Afremov',
     'estella_one',
     'Marialovessea',

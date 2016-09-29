@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class TwitterService {
   config = {
     host: 'https://twitter-server.herokuapp.com',
+    // host: 'http://localhost:3080',
     tweetsPerRequest: 70
   };
 

@@ -3214,7 +3214,7 @@ interface JQuery {
     queue(queueName: string, callback: Function): JQuery;
 }
 declare module "jquery" {
-    // export = $;
+    // export = $; // overrides protractor!
     export = jQuery;
 }
 declare var jQuery: JQueryStatic;
