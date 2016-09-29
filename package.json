@@ -20,7 +20,11 @@
     "typings": "typings",
     "webdriver:update": "webdriver-manager update"
   },
-  "keywords": ["twitter", "gallery", "automatic"],
+  "keywords": [
+    "twitter",
+    "gallery",
+    "automatic"
+  ],
   "author": "Alberto Miranda <b3rt.js@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -39,6 +43,7 @@
     "compression": "^1.6.2",
     "core-js": "^2.4.1",
     "ejs": "^2.5.2",
+    "express": "^4.14.0",
     "gulp-useref": "^3.1.2",
     "install": "^0.8.1",
     "lightgallery": "https://github.com/codealchemist/lightGallery.git",
@@ -48,7 +53,7 @@
     "requestify": "^0.2.3",
     "rxjs": "5.0.0-beta.11",
     "systemjs": "0.19.27",
-    "twitter-server": "^1.2.3",
+    "twitter-server": "^1.2.10",
     "zone.js": "^0.6.17"
   },
   "devDependencies": {
