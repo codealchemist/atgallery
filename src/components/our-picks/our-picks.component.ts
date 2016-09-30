@@ -26,6 +26,15 @@ export class OurPicksComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // retrieve and set cached picks (memory)
+    let ourPicks = this.stateService.getKey('ourPicks');
+    if (ourPicks) {
+      this.ourPicks = ourPicks;
+      this.loading = false;
+      return;
+    }
+
+    // load picks from server
     this.getOurPicks();
   }
 
@@ -36,15 +45,19 @@ export class OurPicksComponent implements OnInit {
   }
 
   getOurPicks () {
-    this.ourPicks = [];
+    let ourPicks = [];
     this.ourPicksService
       .getOurPicks()
       .subscribe(
         pick => {
-          this.ourPicks.push(pick);
-          this.loading = false;
+          ourPicks.push(pick);
         },
-        error => this.error = error
+        error => this.error = error,
+        () => {
+          this.stateService.setKey('ourPicks', ourPicks);
+          this.ourPicks = ourPicks;
+          this.loading = false;
+        }
       );
   }
 
