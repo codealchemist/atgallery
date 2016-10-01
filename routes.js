@@ -5,9 +5,9 @@ var host = 'http://twitter-server.herokuapp.com';
 
 // open graph defaults
 var openGraph = {
-  image: 'http://atgallery.me/atg-logo.png',
+  image: 'http://www.atgallery.me/atg-logo.png',
   title: 'Automatic Twitter Gallery',
-  url: 'http://atgallery.me',
+  url: 'http://www.atgallery.me',
   description: 'Automatically generated image galleries for Twitter accounts.'
 };
 
