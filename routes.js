@@ -20,6 +20,17 @@ function routes(app) {
     res.render('index', openGraph);
   });
 
+  app.get('/search/:query', (req, res) => {
+    var query = req.params.query;
+    var data = {
+      image: openGraph.image,
+      title: `Search @ ${openGraph.title}`,
+      url: `${openGraph.url}/search/${query}`,
+      description: 'Searching Twitter in gallery format.'
+    };
+    res.render('index', data);
+  });
+
   // special routing to allow open graph metas generation
   app.get('/gallery/:username', (req, res) => {
     var userAgent = req.get('User-Agent');

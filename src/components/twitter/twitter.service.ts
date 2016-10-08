@@ -51,6 +51,7 @@ export class TwitterService {
     query = encodeURIComponent(query);
 
     let url = `${host}/search/${query}/media?count=${count}`
+    console.log('--- service url:', url);
     if (lastId) url+=`&max_id=${lastId}`;
 
     return this.http

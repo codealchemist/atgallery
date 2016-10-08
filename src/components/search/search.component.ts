@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
     },
     search: {
       placeholder: 'search terms',
-      url: '/gallery/search'
+      url: '/search'
     }
   }
 
