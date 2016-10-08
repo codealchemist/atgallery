@@ -7,7 +7,7 @@ export class TwitterService {
   config = {
     host: 'https://twitter-server.herokuapp.com',
     // host: 'http://localhost:3080',
-    tweetsPerRequest: 70
+    tweetsPerRequest: 100
   };
 
   constructor (private http: Http) {
@@ -24,7 +24,7 @@ export class TwitterService {
       );
   }
 
-  getMediaTweets ({username, lastId, count}): Observable<[Object]> {
+  getUserMediaTweets ({username, lastId, count}): Observable<[Object]> {
     let host = this.config.host;
     count = count || this.config.tweetsPerRequest;
 
@@ -43,11 +43,31 @@ export class TwitterService {
       .catch(this.handleError);
   }
 
+  getSearchMediaTweets ({query, lastId, count}): Observable<[Object]> {
+    let host = this.config.host;
+    count = count || this.config.tweetsPerRequest;
+    query = encodeURIComponent(query);
+
+    let url = `${host}/search/${query}/media?count=${count}`
+    if (lastId) url+=`&max_id=${lastId}`;
+
+    return this.http
+      .get(url)
+      .map((res: Response) => {
+        let body = res.json();
+        if (body.errors && body.errors.length) {
+          return this.handleError(body.errors[0]);
+        }
+        return body;
+      })
+      .catch(this.handleError);
+  }
+
   getUser (username): Observable<Object> {
     var host = this.config.host;
     return this.http
       .get(`${host}/user/${username}`)
-      .timeout(3000, new Error('timeout exceeded'))
+      .timeout(3000, new Error(`timeout exceeded for user ${username}`))
       .map((res: Response) => {
         let body = res.json();
         if (body.errors && body.errors.length) {

@@ -17,6 +17,10 @@ const appRoutes: Routes = [
   {
     path: 'gallery/:username',
     component: GalleryComponent
+  },
+  {
+    path: 'gallery/search/:query',
+    component: GalleryComponent
   }
 ];
 
