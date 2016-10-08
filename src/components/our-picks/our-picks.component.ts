@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { OurPicksService } from './our-picks.service';
 import { TwitterService } from '../twitter/twitter.service';
 import { StateService } from '../state/state.service';
+import { ConfigService } from '../config/config.service';
 
 @Component({
     selector: 'atg-our-picks',
     templateUrl: 'components/our-picks/our-picks.component.html',
     styleUrls: [ 'components/our-picks/our-picks.component.css' ],
-    providers: [ OurPicksService, TwitterService ]
+    providers: [ OurPicksService, TwitterService, ConfigService ]
 })
 export class OurPicksComponent implements OnInit {
   ourPicks = [];

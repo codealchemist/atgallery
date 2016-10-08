@@ -4,12 +4,13 @@ import { TwitterService } from '../twitter/twitter.service';
 import { StateService } from '../state/state.service';
 import { InfiniteScroll } from 'angular2-infinite-scroll';
 import { SeoService } from '../seo/seo.service';
+import { ConfigService } from '../config/config.service';
 
 @Component({
     selector: 'atg-gallery',
     templateUrl: 'components/gallery/gallery.component.html',
     styleUrls: ['components/gallery/gallery.component.css'],
-    providers: [ TwitterService ]
+    providers: [ TwitterService, ConfigService ]
 })
 export class GalleryComponent implements OnInit {
   @Output() galleryOpened = new EventEmitter();
@@ -169,7 +170,9 @@ export class GalleryComponent implements OnInit {
     this.loading = false;
   }
 
-  private searchTweetsLoaded ({statuses, search_metadata}) {
+  private searchTweetsLoaded (params) {
+    let statuses = params.statuses;
+    let metadata = params.search_metadata;
     let partial = statuses.length;
     if (!partial) {
       // no more tweets!
@@ -179,19 +182,23 @@ export class GalleryComponent implements OnInit {
       return;
     }
 
+    // add tweets
     let addedCount = this.addTweets(statuses);
-    if (!search_metadata.next_results) {
+
+    // check if it's last results page
+    if (!metadata.next_results) {
       // console.log(`--- no more tweets for query ${this.query}`);
       this.loading = false;
       this.hasMore = false;
       return;
     }
-    this.setLastIdFromMetadata(search_metadata);
+
+    // set last id
+    this.setLastIdFromMetadata(metadata);
 
     // recurse to get enough
     this.totalWhileRecursing+=addedCount;
     if (this.totalWhileRecursing < this.tweetsPerRequest) {
-      this.setLastIdFromMetadata(search_metadata);
       this.loadSearchTweets(this.lastId);
       return;
     }

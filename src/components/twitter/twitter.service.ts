@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { ConfigService } from '../config/config.service';
 
 @Injectable()
 export class TwitterService {
@@ -10,19 +11,20 @@ export class TwitterService {
     tweetsPerRequest: 100
   };
 
-  constructor (private http: Http) {
+  constructor (private http: Http, private configService: ConfigService) {
     // this.loadConfig();
+    this.config = this.configService.get('twitter');
   }
 
-  loadConfig (): any {
-    this.http.get('../../twitter-server.json')
-      .map(res => res.json())
-      .subscribe(
-        data => this.config = data,
-        err => console.log(err),
-        () => console.log('--- loaded config', this.config)
-      );
-  }
+  // loadConfig (): any {
+  //   this.http.get('../../twitter-server.json')
+  //     .map(res => res.json())
+  //     .subscribe(
+  //       data => this.config = data,
+  //       err => console.log(err),
+  //       () => console.log('--- loaded config', this.config)
+  //     );
+  // }
 
   getUserMediaTweets ({username, lastId, count}): Observable<[Object]> {
     let host = this.config.host;
@@ -63,7 +65,7 @@ export class TwitterService {
       .catch(this.handleError);
   }
 
-  getUser (username): Observable<Object> {
+  getUser (username) {
     var host = this.config.host;
     return this.http
       .get(`${host}/user/${username}`)

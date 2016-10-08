@@ -63,14 +63,15 @@ export class OurPicksService {
     'ZaibatsuPlanet',
     'Telanova_',
     'HuffingtonPost',
-    'ClariceByGuestU',
     'travelinglens',
     'premierleague',
     'wsl'
   ];
 
   constructor (private http: Http, twitterService: TwitterService) {
-    this.twitterService = twitterService;
+      // if not done this way the compiler throws:
+      // Type 'Observable<Object>' is not assignable to type '[Object]'.
+      this.twitterService = twitterService;
   }
 
   getOurPicks (): Observable<[Object]> {

@@ -1,4 +1,4 @@
-<atg-title [sectionName]="name"></atg-title>
+<atg-title [sectionName]="sectionName"></atg-title>
 
 <div
   id="lightgallery"
@@ -11,25 +11,25 @@
 
   <span *ngFor="let tweet of tweets" class="media-container">
     <!-- video -->
-    <div *ngIf="tweet.extended_entities.media[0].video_info">
+    <div *ngIf="tweet.media.video_info">
       <div style="display:none" id="{{tweet.id}}">
         <video class="lg-video-object lg-html5" controls loop preload="none">
-          <source src="{{tweet.extended_entities.media[0].video_info.variants[0].url}}" type="video/mp4">
+          <source src="{{tweet.media.video_info.variants[0].url}}" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
       </div>
       <a
-        [attr.data-poster]="tweet.extended_entities.media[0].media_url"
+        [attr.data-poster]="tweet.media.media_url"
         [attr.data-sub-html]="tweet.text"
         [attr.data-html]="'#'+tweet.id"
         class="gallery-item"
       >
-        <img src="{{tweet.extended_entities.media[0].media_url}}:thumb">
+        <img src="{{tweet.media.media_url}}:thumb">
 
         <!-- OPEN TWEET ICON -->
         <span
           class="open-tweet"
-          (click)="openTweet(tweet.extended_entities.media[0].display_url)"
+          (click)="openTweet(tweet.media.display_url, $event)"
         >
           <i class="glyphicon glyphicon-retweet"></i>
         </span>
@@ -38,17 +38,17 @@
 
     <!-- image -->
     <a
-      *ngIf="!tweet.extended_entities.media[0].video_info"
+      *ngIf="!tweet.media.video_info"
       class="gallery-item"
-      href="{{tweet.extended_entities.media[0].media_url}}:large"
+      href="{{tweet.media.media_url}}:large"
       [attr.data-sub-html]="tweet.text"
     >
-      <img src="{{tweet.extended_entities.media[0].media_url}}:thumb" class="gallery-item-image">
+      <img src="{{tweet.media.media_url}}:thumb" class="gallery-item-image">
 
       <!-- OPEN TWEET ICON -->
       <span
         class="open-tweet"
-        (click)="openTweet(tweet.extended_entities.media[0].display_url)"
+        (click)="openTweet(tweet.media.display_url, $event)"
       >
         <i class="glyphicon glyphicon-retweet"></i>
       </span>
@@ -89,7 +89,7 @@
 
     <div class="col-md-6">
       <div *ngIf="!hasMore" id="the-end" class="alert alert-success" role="alert">
-        Well done! You retrieved all media for user <b>{{username}}</b>.
+        {{endMessage}}
       </div>
     </div>
 

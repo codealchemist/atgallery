@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     // set placeholder and search url for current type
-    if (!this.type in this.types) throw new Error('ERROR: Search type not defined in SearchComponent.types.')
+    if (!this.types[this.type]) throw new Error('ERROR: Search type not defined in SearchComponent.types.')
     let searchType = this.types[this.type]
     this.placeholder = searchType.placeholder
     this.url = searchType.url
