@@ -293,3 +293,11 @@ footer {
 *:focus {
   outline:none !important
 }
+
+.p {
+  padding: 10px;
+}
+
+.m {
+  margin: 10px;
+}

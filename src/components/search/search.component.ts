@@ -35,7 +35,8 @@ export class SearchComponent implements OnInit {
   }
 
   viewGallery () {
-    this.router.navigate([this.url, this.query]);
+    let query = encodeURIComponent(this.query);
+    this.router.navigate([this.url, query]);
   }
 
   searchOnEnter (keyCode) {

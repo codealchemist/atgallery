@@ -27,7 +27,7 @@ export class GalleryComponent implements OnInit {
   totalWhileRecursing = 0;
   gallery;
   endMessage = 'No more tweets available.';
-  tweetIds = [];
+  errorMessage = '';
 
   constructor (
     private route: ActivatedRoute,
@@ -127,13 +127,13 @@ export class GalleryComponent implements OnInit {
     // query type search: gets medis tweets for used query terms
     this.endMessage = `Well done! You retrieved all available media for your search.`;
     this.loadSearchTweets(null);
-    this.sectionName = this.query;
+    this.sectionName = decodeURIComponent(this.query);
   }
 
   private userLoaded(user) {
     this.user = user;
     this.stateService.setKey('galleryOpened', user);
-    this.sectionName = user.name;
+    this.sectionName = decodeURIComponent(user.name);
 
     // set open graph metas
     this.seoService.setOpenGraphMeta('image', user.profile_image_url.replace('_normal', ''));
@@ -264,6 +264,9 @@ export class GalleryComponent implements OnInit {
 
   handleError (error) {
     console.log('--- ERROR:', error);
+    this.loading = false;
+    this.errorMessage = 'Oops... Something went wrong.';
+    this.sectionName = 'Error';
   }
 
   onScroll () {

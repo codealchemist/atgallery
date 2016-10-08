@@ -1,5 +1,9 @@
 <atg-title [sectionName]="sectionName"></atg-title>
 
+<div *ngIf="errorMessage" class="alert alert-danger m" role="alert">
+  {{errorMessage}}
+</div>
+
 <div
   id="lightgallery"
   class="gallery"
