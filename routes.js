@@ -48,6 +48,7 @@ function routes(app) {
     var data = {
       username: openGraph.username,
       image: openGraph.image,
+      proxiedImage: openGraph.image,
       title: `Search @ ${openGraph.title}`,
       url: `${openGraph.url}/search/${query}`,
       description: 'Searching Twitter in gallery format.'
