@@ -17,6 +17,7 @@ export class OurPicksService {
     'estella_one',
     'Marialovessea',
     'NASA',
+    'NASAhistory',
     'MyBeachStore',
     'stockbundles',
     'Tripfania',
