@@ -86,7 +86,7 @@ function routes(app) {
         proxiedImage: proxiedImage,
         title: `${openGraph.title} for ${username}`,
         url: `${openGraph.url}/gallery/${username}`,
-        description: user.description
+        description: user.description || openGraph.description
       };
       res.render('index', data);
     })
