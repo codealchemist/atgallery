@@ -5,6 +5,7 @@ var host = 'http://twitter-server.herokuapp.com';
 
 // open graph defaults
 var openGraph = {
+  username: '@atgalleryapp',
   image: 'http://www.atgallery.me/atg-logo.png',
   title: 'Automatic Twitter Gallery',
   url: 'http://www.atgallery.me',
@@ -23,6 +24,7 @@ function routes(app) {
   app.get('/search/:query', (req, res) => {
     var query = req.params.query;
     var data = {
+      username: openGraph.username,
       image: openGraph.image,
       title: `Search @ ${openGraph.title}`,
       url: `${openGraph.url}/search/${query}`,
@@ -54,6 +56,7 @@ function routes(app) {
     .then((response) => {
       var user = response.getBody();
       var data = {
+        username: `@${username}`,
         image: user.profile_image_url.replace('_normal', ''),
         title: `${openGraph.title} for ${username}`,
         url: `${openGraph.url}/gallery/${username}`,
