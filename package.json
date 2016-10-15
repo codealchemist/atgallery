@@ -88,5 +88,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/codealchemist/atgallery.git"
+  },
+  "engines": {
+    "node": "6.*"
   }
 }
