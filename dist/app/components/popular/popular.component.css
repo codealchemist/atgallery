@@ -1,0 +1,16 @@
+.popular-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background: #111;
+  padding: 70px 0;
+}
+
+.row-filling {
+  width: 220px;
+}
+
+.gallery-item-sm {
+  width: 220px;
+  height: 220px;
+}

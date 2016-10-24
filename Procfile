@@ -1,1 +1,1 @@
-web: node index.js
+web: PROD=true node index.js

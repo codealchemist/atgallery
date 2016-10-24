@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { HomeComponent }  from '../home/home.component';
 import { SearchComponent }  from '../search/search.component';
+import { PopularComponent }  from '../popular/popular.component';
 import { TitleComponent }  from '../title/title.component';
 import { ShareComponent }  from '../share/share.component';
 import { OurPicksComponent }  from '../our-picks/our-picks.component';
@@ -22,6 +23,7 @@ import { CeiboShare } from 'ng2-social-share';
     AppComponent,
     HomeComponent,
     SearchComponent,
+    PopularComponent,
     TitleComponent,
     ShareComponent,
     OurPicksComponent,

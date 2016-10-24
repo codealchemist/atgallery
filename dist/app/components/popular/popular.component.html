@@ -1,0 +1,32 @@
+<h2>Most Popular Galleries</h2>
+<p>
+  These are the top galleries being viewed by our users.<br>
+  Let's see what you can find here. Enjoy!
+</p>
+
+<div class="popular-container">
+  <a *ngFor="let item of popularItems" (click)="selectGallery(item)">
+    <div
+      class="gallery-pick-container gallery-item-sm"
+      [ngStyle]="{'background-image': 'url(' + item.background + ')'}"
+    >
+      <div class="gallery-description">{{item.name}}</div>
+    </div>
+  </a>
+
+  <!-- row fillings -->
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+  <i class="row-filling"></i>
+</div>

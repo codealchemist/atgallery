@@ -5,12 +5,14 @@ import { StateService } from '../state/state.service';
 import { InfiniteScroll } from 'angular2-infinite-scroll';
 import { SeoService } from '../seo/seo.service';
 import { ConfigService } from '../config/config.service';
+import { PopularApiService } from '../api/popular.service';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'atg-gallery',
     templateUrl: 'components/gallery/gallery.component.html',
     styleUrls: ['components/gallery/gallery.component.css'],
-    providers: [ TwitterService, ConfigService ]
+    providers: [ TwitterService, ConfigService, PopularApiService ]
 })
 export class GalleryComponent implements OnInit {
   @Output() galleryOpened = new EventEmitter();
@@ -33,7 +35,8 @@ export class GalleryComponent implements OnInit {
     private route: ActivatedRoute,
     private twitterService: TwitterService,
     private stateService: StateService,
-    private seoService: SeoService
+    private seoService: SeoService,
+    private popularApiService: PopularApiService
   ) { }
 
   ngOnInit () {
@@ -131,6 +134,18 @@ export class GalleryComponent implements OnInit {
   }
 
   private userLoaded(user) {
+    // increment and store counter for current user
+    let count = this.popularApiService
+      .countGallery(user)
+      .subscribe(
+        response => {
+          console.log('-- count response:', response)
+        },
+        error => {
+          console.log('-- count error:', error)
+        }
+      )
+
     this.user = user;
     this.stateService.setKey('galleryOpened', user);
     this.sectionName = decodeURIComponent(user.name);
