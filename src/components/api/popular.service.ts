@@ -17,7 +17,6 @@ export class PopularApiService {
   }
 
   countGallery (user) {
-    // console.log('-- COUNT GALLERY:', user)
     let username = user.screen_name
     if (!username || !username.match(/^@?(\w){1,15}$/)) {
       throw new Error('ERROR: invalid Twitter username')
@@ -38,7 +37,6 @@ export class PopularApiService {
       .timeout(3000, new Error(`countGallery: timeout exceeded for user ${username}`))
       .map((res: Response) => {
         let body = res.json()
-        console.log(`--- patched | incremented count for username ${username}`, body)
         if (body.errors && body.errors.length) {
           return this.handleError(body.errors[0])
         }
@@ -57,7 +55,6 @@ export class PopularApiService {
       .timeout(3000, new Error(`getPopular: timeout exceeded`))
       .map((res: Response) => {
         let body = res.json()
-        console.log('-- got popular galleries:', body)
         if (body.errors && body.errors.length) {
           return this.handleError(body.errors[0])
         }

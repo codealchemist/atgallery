@@ -112,7 +112,7 @@ module.exports = function routes(app) {
       return
     }
 
-    console.log('-- PATCH | update count for user gallery:', data.name)
+    // console.log('-- PATCH | update count for user gallery:', data.name)
     popularCollection.update(
       {username: username},
       {
@@ -134,7 +134,6 @@ module.exports = function routes(app) {
   })
 
   app.get('/api/popular', (req, res) => {
-    console.log('-- get popular galleries')
     popularCollection.find()
       .limit(16)
       .sort({count: -1}, (error, docs) => {
