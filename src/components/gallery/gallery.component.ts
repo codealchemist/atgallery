@@ -135,16 +135,7 @@ export class GalleryComponent implements OnInit {
 
   private userLoaded(user) {
     // increment and store counter for current user
-    let count = this.popularApiService
-      .countGallery(user)
-      .subscribe(
-        response => {
-          console.log('-- count response:', response)
-        },
-        error => {
-          console.log('-- count error:', error)
-        }
-      )
+    let count = this.popularApiService.countGallery(user)
 
     this.user = user;
     this.stateService.setKey('galleryOpened', user);
