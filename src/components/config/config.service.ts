@@ -22,7 +22,7 @@ export class ConfigService {
         tweetsPerRequest: 100
       },
       api: {
-        apiUrl: 'https://www.atgallery.me/api'
+        apiUrl: 'http://www.atgallery.me/api'
       }
     }
   }
