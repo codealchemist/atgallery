@@ -9,6 +9,9 @@ export class ConfigService {
       twitter: {
         host: 'http://localhost:3080',
         tweetsPerRequest: 10
+      },
+      api: {
+        apiUrl: 'http://localhost:5000/api'
       }
     },
 
@@ -17,6 +20,9 @@ export class ConfigService {
       twitter: {
         host: 'https://twitter-server.herokuapp.com',
         tweetsPerRequest: 100
+      },
+      api: {
+        apiUrl: 'https://www.atgallery.me/api'
       }
     }
   }

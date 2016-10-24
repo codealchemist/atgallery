@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core'
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import { Observable } from 'rxjs/Observable'
+import { ConfigService } from '../config/config.service'
 
 @Injectable()
 export class PopularApiService {
-  private apiUrl = 'http://localhost:5000/api'
+  private config = {
+    apiUrl: 'http://localhost:5000/api'
+  }
 
-  constructor (private http: Http) {
-
+  constructor (
+    private http: Http,
+    private configService: ConfigService
+  ) {
+    this.config = this.configService.get('api')
   }
 
   countGallery (user) {
@@ -17,7 +23,8 @@ export class PopularApiService {
       throw new Error('ERROR: invalid Twitter username')
     }
 
-    let url = `${this.apiUrl}/popular/count`
+    let apiUrl = this.config.apiUrl
+    let url = `${apiUrl}/popular/count`
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let data = {
       username: username,
@@ -41,7 +48,8 @@ export class PopularApiService {
   }
 
   getPopular () {
-    let url = `${this.apiUrl}/popular`
+    let apiUrl = this.config.apiUrl
+    let url = `${apiUrl}/popular`
     // let headers = new Headers({ 'Content-Type': 'application/json' });
 
     return this.http

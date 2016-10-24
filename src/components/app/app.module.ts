@@ -12,6 +12,7 @@ import { ShareComponent }  from '../share/share.component';
 import { OurPicksComponent }  from '../our-picks/our-picks.component';
 import { GalleryComponent }  from '../gallery/gallery.component';
 import { StateService } from '../state/state.service';
+import { ConfigService } from '../config/config.service';
 import { routing } from './app.routing';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { SeoService } from '../seo/seo.service';
@@ -32,6 +33,7 @@ import { CeiboShare } from 'ng2-social-share';
   ],
   providers: [
     StateService,
+    ConfigService,
     Title,
     SeoService
   ],
