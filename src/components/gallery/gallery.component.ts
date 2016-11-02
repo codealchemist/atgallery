@@ -120,7 +120,8 @@ export class GalleryComponent implements OnInit {
   load () {
     // user type search: gets media tweets for a specific user
     if (this.username) {
-      this.endMessage = `Well done! You retrieved all available media for user <b>${this.username}</b>.`;
+      this.endMessage = `Well done! You retrieved all available media for
+        <a href="https://twitter.com/${this.username}">@${this.username}</a>.`;
 
       this.loadUser();
       this.loadUserTweets(null);
