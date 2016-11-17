@@ -39,6 +39,7 @@
     "@angular/upgrade": "2.*",
     "angular2-in-memory-web-api": "*",
     "angular2-infinite-scroll": "^0.2.1",
+    "body-parser": "^1.15.2",
     "bootstrap": "^3.3.6",
     "compression": "^1.6.2",
     "core-js": "^2.4.1",
