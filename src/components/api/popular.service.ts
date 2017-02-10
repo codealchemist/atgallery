@@ -32,6 +32,7 @@ export class PopularApiService {
       background: user.profile_image_url.replace('_normal', '') // big image
     }
 
+    console.log('COUNT POPULAR', url)
     return this.http
       .patch(url, data, headers)
       .timeout(3000, new Error(`countGallery: timeout exceeded for user ${username}`))

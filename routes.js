@@ -112,7 +112,7 @@ module.exports = function routes(app) {
       return
     }
 
-    // console.log('-- PATCH | update count for user gallery:', data.name)
+    console.log('-- PATCH | update count for user gallery:', data.name)
     popularCollection.update(
       {username: username},
       {

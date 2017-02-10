@@ -12,23 +12,6 @@ app.engine('html', ejs.renderFile)
 app.set('views', __dirname + '/dist/app')
 app.use(compression())
 
-// allow cors
-// var corsOptions = {
-//   origin: function (origin, callback) {
-//     if (!origin) return callback('Origin Not Allowed', false)
-
-//     var isAllowed = config.cors.whitelist.some((allowedDomain) => {
-//       return origin.match('^' + allowedDomain)
-//     })
-
-//     // allowed domain
-//     if (isAllowed) return callback(null, true)
-
-//     // not allowed domain
-//     callback('Origin Not Allowed', false)
-//   }
-// }
-
 // parse application/json
 app.use(bodyParser.json())
 
