@@ -94,6 +94,6 @@
     "url": "https://github.com/codealchemist/atgallery.git"
   },
   "engines": {
-    "node": "6.*"
+    "node": "7.*"
   }
 }
