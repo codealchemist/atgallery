@@ -6,7 +6,7 @@ export class StateService {
   @Output() onChange = new EventEmitter<any>();
   storage = {}; // In memory storage.
 
-  setKey (key, value, ttl) {
+  setKey (key, value, ttl?: number) {
     ttl = ttl || 60 * 60 * 1000; // 1 hour.
     this.storage[key] = value;
     localStorage.setItem(key, JSON.stringify({
