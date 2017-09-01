@@ -22,7 +22,7 @@ export class StateService {
     const currentTimestamp = (new Date()).getTime();
 
     // Invalidate cache.
-    if (currentTimestamp - cached.timestamp > cached.ttl) {
+    if (cached && currentTimestamp - cached.timestamp > cached.ttl) {
       localStorage.removeItem(key);
       delete this.storage[key];
       return null;
