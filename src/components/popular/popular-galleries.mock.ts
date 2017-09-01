@@ -49,14 +49,7 @@ export const popularGalleriesMock = [
     "username" : "fabulousanimals"
   },
   {
-    "background" : "http://pbs.twimg.com/profile_images/628494290512056320/99NIlF76.jpg",
-    "count" : 1,
-    "description" : "Art & Poetry . . .  © A.A.",
-    "name" : "AA",
-    "username" : "mindworld28"
-  },
-  {
-    "background" : "http://pbs.twimg.com/profile_images/771161406762659840/3ob9e1Sc.jpg",
+    "background" : "http://pbs.twimg.com/profile_images/903401856260423680/mVPEDDd7.jpg",
     "count" : 1,
     "description" : "ART | CULTURE | COUTURE |  \n     Art Quarterly https://t.co/7JBA0r6ela | Stockists https://t.co/3OM1iDOeY4 | Advertising https://t.co/PwLoN47BhD",
     "name" : "beautiful.bizarre",
@@ -84,24 +77,10 @@ export const popularGalleriesMock = [
     "username" : "Marialovessea"
   },
   {
-    "background" : "http://pbs.twimg.com/profile_images/755902693802184704/4_Vo3RV4.jpg",
-    "count" : 1,
-    "description" : "Victor Samra (@vsamra3) at the easel. Please tweet us your questions or comments.",
-    "name" : "Museum of Modern Art",
-    "username" : "MuseumModernArt"
-  },
-  {
     "background" : "http://pbs.twimg.com/profile_images/683881413448306688/mLaq9e-c.jpg",
     "count" : 1,
     "description" : "Rare Photos of the MOST Amazing Moments in History!",
     "name" : "Amazing Moments",
     "username" : "AMAZlNGMoment"
-  },
-  {
-    "background" : "http://pbs.twimg.com/profile_images/753766741579137024/T6g3RQK9.jpg",
-    "count" : 1,
-    "description" : "In appreciation, I follow ALL who follow me, except NSFW. To make space, I unfollow all who unfollow me. PLEASE, NO DMs.",
-    "name" : "Cherie",
-    "username" : "sweetrhythms"
   }
 ]

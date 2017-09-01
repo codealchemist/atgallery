@@ -40,7 +40,8 @@ export class PopularComponent implements OnInit {
                 this.popularItems.push(viewObject)
               })
           })
-        }
+        },
+        error => this.popularItems = popularGalleriesMock
       )
   }
 
