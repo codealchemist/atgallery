@@ -314,13 +314,16 @@ export class GalleryComponent implements OnInit {
       tweet.extended_entities.media[0]
     ) {
       mediaTweet = tweet.extended_entities.media[0];
+      return mediaTweet;
     }
+
     if (
       tweet.entities &&
       tweet.entities.media &&
       tweet.entities.media[0]
     ) {
       mediaTweet = tweet.entities.media[0];
+      return mediaTweet;
     }
 
     // reply with media
@@ -331,7 +334,9 @@ export class GalleryComponent implements OnInit {
       tweet.retweeted_status.entities.media[0]
     ) {
       mediaTweet = tweet.retweeted_status.entities.media[0];
+      return mediaTweet;
     }
+
     if (
       tweet.retweeted_status &&
       tweet.retweeted_status.extended_entities &&
@@ -339,12 +344,11 @@ export class GalleryComponent implements OnInit {
       tweet.retweeted_status.extended_entities.media[0]
     ) {
       mediaTweet = tweet.retweeted_status.extended_entities.media[0];
+      return mediaTweet;
     }
 
     // handle error
     // console.log('--- mediaTweet:', mediaTweet)
     // if (!mediaTweet) throw new Error('ERROR: Tweet was expected to contain media!');
-
-    return mediaTweet;
   }
 }
