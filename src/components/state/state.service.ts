@@ -14,20 +14,27 @@ export class StateService {
       ttl,
       timestamp: (new Date()).getTime()
     }));
-    this.onChange.emit({key: key, value: value});
+    this.onChange.emit({key, value});
   }
 
   getKey (key) {
+    // Prefer in memory cache.
+    if (this.storage[key]) return this.storage[key];
+
+    // Try localStorage.
     const cached = JSON.parse(localStorage.getItem(key));
-    const currentTimestamp = (new Date()).getTime();
+    if (!cached) return null;
 
     // Invalidate cache.
-    if (cached && currentTimestamp - cached.timestamp > cached.ttl) {
+    const currentTimestamp = (new Date()).getTime();
+    if (currentTimestamp - cached.timestamp > cached.ttl) {
       localStorage.removeItem(key);
       delete this.storage[key];
       return null;
     }
 
-    return this.storage[key] || cached.value;
+    // Set in memory cache and return cached value.
+    this.storage[key] = cached.value;
+    return cached.value;
   }
 }
